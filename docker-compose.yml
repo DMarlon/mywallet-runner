@@ -1,0 +1,47 @@
+version: '3.5'
+
+services: 
+    postgres:
+        container_name: mywallet-postgres
+        image: postgres:12.5
+        environment:
+            - POSTGRES_DB=wallet
+            - POSTGRES_USER=dev
+            - POSTGRES_PASSWORD=dev
+        volumes:
+            - ./database:/var/lib/postgresql/data
+        networks:
+            - postgresnetwork
+            
+    api:
+        container_name: mywallet-api
+        depends_on: [postgres]
+        build:
+            context: https://raw.githubusercontent.com/DMarlon/mywallet-api/master/Dockerfile
+        working_dir: /api
+        environment:
+            - DB_SERVER=postgres
+            - DB_PORT=5432
+            - DB_NAME=wallet
+            - DB_USER=dev
+            - DB_PASSWORD=dev
+            - FRONT_SERVER=http://localhost:8801
+        ports:
+            - 8800:8080
+        networks:
+            - postgresnetwork
+
+    pgadmin:
+        container_name: mywallet-pgadmin
+        image: dpage/pgadmin4
+        ports:
+           - 8802:80
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=test@mywallet.com.br
+            - PGADMIN_DEFAULT_PASSWORD=dev
+        networks:
+            - postgresnetwork
+
+networks:
+    postgresnetwork:
+        driver: bridge
