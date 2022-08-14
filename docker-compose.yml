@@ -30,6 +30,18 @@ services:
             - 8800:8080
         networks:
             - postgresnetwork
+            
+    front:
+        container_name: mywallet-front
+        build:
+            context: https://raw.githubusercontent.com/DMarlon/mywallet-front/master/Dockerfile
+            args:
+                react_app_front_name: My Wallet
+                react_app_api_url: http://localhost:8800
+        working_dir: /front
+        
+        ports:
+            - 8801:8801
 
     pgadmin:
         container_name: mywallet-pgadmin
