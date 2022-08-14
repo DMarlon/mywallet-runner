@@ -5,7 +5,7 @@ MyWallet - E-Wallet service
 ## 🔧 Functions
 
 ### Function 01:
-- Runner for mywallet project (Will build and run the [mywallet-api](https://github.com/DMarlon/tact-api) project)
+- Runner for mywallet project (Will build and run the [mywallet-api](https://github.com/DMarlon/mywallet-api) and [mywallet-front](https://github.com/DMarlon/mywallet-front) projects)
 
 ## Dependencies 
 
