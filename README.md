@@ -25,7 +25,8 @@ Just download the [docker-compose.yml](docker-compose.yml) and run the commands 
 2. Using project
     - After running docker you can use the project, it will release 3 endpoints:
     1. http://localhost:8800 - API
-    3. http://localhost:8802 - PgAdmin
+    1. http://localhost:8801 - Frontend
+    1. http://localhost:8802 - PgAdmin
 
 ## Made with:
 [![UBUNTU](https://img.shields.io/badge/Ubuntu-e95420?style=for-the-badge&logo=ubuntu&logoColor=white)](https://ubuntu.com/download)
